@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import json
 from calendar import monthrange
@@ -77,7 +78,8 @@ class SwearsDb:
 		return self.get_swear_count(uid)
 
 	def import_json(self):
-		with open("users.json") as user_file:
+		full_path = os.path.realpath(__file__)
+		with open(os.path.dirname(full_path) + "/users.json") as user_file:
 			users = json.load(user_file)
 			for u in users:
 				exists = self.get_user(u['uid'])
