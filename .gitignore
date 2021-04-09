@@ -1,2 +1,10 @@
 __pycache__/*
 swears.db
+lib/LCD_0inch96.py
+lib/LCD_1inch14.py
+lib/LCD_1inch28.py
+lib/LCD_1inch3.py
+lib/LCD_1inch54.py
+lib/LCD_1inch8.py
+lib/LCD_2inch4.py
+
