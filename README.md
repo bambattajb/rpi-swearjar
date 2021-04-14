@@ -11,3 +11,16 @@ And that's it!
 Assuming the hardware and interface is all set up correctly (see above links) then open up `users.json` and add the details of each user. `uid` is the NFC card / fob / device identifier. 
 
 Once done, executing `python3 run.py` should just work.
+
+# TODO
+- Add view data without logging
+- Add clear / reset function. 
+^ using buttons? (as long as they can be implemented in a way that doesn't conflict with the NFC board) 
+
+# Notes
+
+Waveshare NFC board seems to use GPIO pins that the LCD module needs so they cannot be run simultaneously. 
+
+To circumvent the problem, I am destroying the NFC object and re instantiating once the LCD processes have completed. Not ideal.
+
+Will look for an LCD board that can run in parallel.

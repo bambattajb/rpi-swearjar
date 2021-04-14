@@ -43,7 +43,7 @@ class SwearsDb:
 		#Today
 		todayBase = str(year).zfill(2) + '-' + str(month).zfill(2) + '-' + str(day).zfill(2)
 		todayStart = todayBase + " 00:00:00"
-		todayEnd = todayBase + " 59:59:00"
+		todayEnd = todayBase + " 23:59:59"
 		cur.execute("SELECT count(*) from swears WHERE uid='%s' AND time BETWEEN '%s' AND '%s'" % (uid, todayStart, todayEnd))
 		today = cur.fetchall()
 		con.commit()
