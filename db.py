@@ -2,6 +2,7 @@ import os
 import sqlite3
 import json
 from calendar import monthrange
+from datetime import datetime, timedelta
 import time
 year, month, day, hour, min = map(int, time.strftime("%Y %m %d %H %M").split())
 
@@ -48,6 +49,15 @@ class SwearsDb:
 		today = cur.fetchall()
 		con.commit()
 
+		#Week
+		weekStartTimestamp = datetime.strptime(todayBase, "%Y-%m-%d")
+		weekStart = weekStartTimestamp - timedelta(days=weekStartTimestamp.weekday())
+		weekEnd = weekStart + timedelta(days=6)
+		cur.execute("SELECT count(*) from swears WHERE uid='%s' AND time BETWEEN '%s' AND '%s'" % (uid, weekStart, weekEnd))
+		thisweek = cur.fetchall()
+		con.commit()
+
+
 		# Month
 		daysInMonth = monthrange(year, month)[1]
 		monthStart = str(year).zfill(2) + '-' + str(month).zfill(2) + '-01' + " 00:00:00"
@@ -59,6 +69,7 @@ class SwearsDb:
 		counts = {
 			"Total" : total[0][0],
 			"Today" : today[0][0],
+			"Week"	: thisweek[0][0],
 			"Month" : thismonth[0][0]
 		}
 

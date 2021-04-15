@@ -34,7 +34,7 @@ if __name__ == '__main__':
                     screen.draw("Hello %s %s" % (user[2], user[1]))
                     time.sleep(2)
                     swearcount = db.insert_swear(user[0])
-                    screen.draw("%s swears logged\n\nToday: %s\nThis month: %s" % (swearcount['Total'], swearcount['Today'], swearcount['Month']))
+                    screen.draw("%s swears logged\n\nToday: %s\nThis week: %s\nThis month: %s" % (swearcount['Total'], swearcount['Today'], swearcount['Week'], swearcount['Month']))
 
                 time.sleep(3)
                 # Instantiate NFC
